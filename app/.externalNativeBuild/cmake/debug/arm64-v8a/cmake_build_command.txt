@@ -1,10 +1,10 @@
 Executable : C:\Users\Nickl\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
--HD:\Users\Nickl\AndroidStudioProjects\dndcompanion\app
--BD:\Users\Nickl\AndroidStudioProjects\dndcompanion\app\.externalNativeBuild\cmake\debug\arm64-v8a
+-HD:\dndcompaniongit\dndcompanion\app
+-BD:\dndcompaniongit\dndcompanion\app\.externalNativeBuild\cmake\debug\arm64-v8a
 -DANDROID_ABI=arm64-v8a
 -DANDROID_PLATFORM=android-26
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=D:\Users\Nickl\AndroidStudioProjects\dndcompanion\app\build\intermediates\cmake\debug\obj\arm64-v8a
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=D:\dndcompaniongit\dndcompanion\app\build\intermediates\cmake\debug\obj\arm64-v8a
 -DCMAKE_BUILD_TYPE=Debug
 -DANDROID_NDK=C:\Users\Nickl\AppData\Local\Android\Sdk\ndk-bundle
 -DCMAKE_CXX_FLAGS=
