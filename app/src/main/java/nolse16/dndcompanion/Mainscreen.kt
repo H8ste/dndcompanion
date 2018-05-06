@@ -10,9 +10,11 @@ import android.view.*
 import kotlinx.android.synthetic.main.content_mainscreen.*
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.graphics.Paint
 import android.os.Environment
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.text.Html
 import android.util.Log
 import java.io.*
 import com.google.gson.Gson
@@ -100,49 +102,102 @@ class Mainscreen : AppCompatActivity(){
             hitpointsText.text = topic.hitPointsCurrent.toString()
             temphitpointsText.text = topic.tempHitPoints.toString()
             speedText.text = topic.speed.toString() + " feet"
-            StrMod.text = "+" + calcAttributeMod(topic.attributeRoles[0]).toString()
-            DexMod.text = "+" + calcAttributeMod(topic.attributeRoles[1]).toString()
-            ConMod.text = "+" + calcAttributeMod(topic.attributeRoles[2]).toString()
-            IntMod.text = "+" + calcAttributeMod(topic.attributeRoles[3]).toString()
-            WisMod.text = "+" + calcAttributeMod(topic.attributeRoles[4]).toString()
-            ChaMod.text = "+" + calcAttributeMod(topic.attributeRoles[5]).toString()
+            StrMod.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[0]))
+            DexMod.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[1]))
+            ConMod.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[2]))
+            IntMod.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[3]))
+            WisMod.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[4]))
+            ChaMod.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[5]))
 
-            StrSavingThrow.text = (calcAttributeMod(topic.attributeRoles[0]) + addPotentialProf(topic, 0)).toString()
-            DexSavingThrow.text = (calcAttributeMod(topic.attributeRoles[1]) + addPotentialProf(topic, 1)).toString()
-            ConSavingThrow.text = (calcAttributeMod(topic.attributeRoles[2]) + addPotentialProf(topic, 2)).toString()
-            IntSavingThrow.text = (calcAttributeMod(topic.attributeRoles[3]) + addPotentialProf(topic, 3)).toString()
-            WisSavingThrow.text = (calcAttributeMod(topic.attributeRoles[4]) + addPotentialProf(topic, 4)).toString()
-            ChaSavingThrow.text = (calcAttributeMod(topic.attributeRoles[5]) + addPotentialProf(topic, 5)).toString()
+            StrSavingThrow.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[0]) + addPotentialProf(topic, 0))
+            StrSavingThrow.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            DexSavingThrow.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[1]) + addPotentialProf(topic, 1))
+            DexSavingThrow.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            ConSavingThrow.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[2]) + addPotentialProf(topic, 2))
+            ConSavingThrow.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            IntSavingThrow.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[3]) + addPotentialProf(topic, 3))
+            IntSavingThrow.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            WisSavingThrow.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[4]) + addPotentialProf(topic, 4))
+            WisSavingThrow.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            ChaSavingThrow.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[5]) + addPotentialProf(topic, 5))
+            ChaSavingThrow.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
-            Athletics.text = (calcAttributeMod(topic.attributeRoles[0]) + addPotentialSkillBoost(topic, nAthletics)).toString()
+            Athletics.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[0]) + addPotentialSkillBoost(topic, nAthletics))
+            Athletics.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
-            Acrobatics.text = (calcAttributeMod(topic.attributeRoles[1]) + addPotentialSkillBoost(topic, nAcrobatics)).toString()
-            SleightOfHand.text = (calcAttributeMod(topic.attributeRoles[1]) + addPotentialSkillBoost(topic, nSleightOfHand)).toString()
-            Stealth.text = (calcAttributeMod(topic.attributeRoles[1]) + addPotentialSkillBoost(topic, nStealth)).toString()
-
-
-
-            Arcana.text = (calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nArcana)).toString()
-            History.text = (calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nHistory)).toString()
-            Investigation.text = (calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nInvestigation)).toString()
-            Nature.text = (calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nNature)).toString()
-            Religion.text = (calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nReligion)).toString()
-
-
-
-
-            AnimalHandling.text = (calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nAnimalHandling)).toString()
-            Insight.text = (calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nInsight)).toString()
-            Medicine.text = (calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nMedicine)).toString()
-            Perception.text = (calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nPerception)).toString()
-            Survival.text = (calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nSurvival)).toString()
+            Acrobatics.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[1]) + addPotentialSkillBoost(topic, nAcrobatics))
+            Acrobatics.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            SleightOfHand.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[1]) + addPotentialSkillBoost(topic, nSleightOfHand))
+            SleightOfHand.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Stealth.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[1]) + addPotentialSkillBoost(topic, nStealth))
+            Stealth.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
 
 
-            Deception.text = (calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nDeception)).toString()
-            Intimidation.text = (calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nIntimidation)).toString()
-            Performance.text = (calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nPerformance)).toString()
-            Persuasion.text = (calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nPersuasion)).toString()
+            Arcana.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nArcana))
+            Arcana.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            History.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nHistory))
+            History.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Investigation.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nInvestigation))
+            Investigation.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Nature.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nNature))
+            Nature.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Religion.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[3]) + addPotentialSkillBoost(topic, nReligion))
+            Religion.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+
+
+
+
+            AnimalHandling.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nAnimalHandling))
+            AnimalHandling.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Insight.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nInsight))
+            Insight.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Medicine.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nMedicine))
+            Medicine.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Perception.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nPerception))
+            Perception.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Survival.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[4]) + addPotentialSkillBoost(topic, nSurvival))
+            Survival.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+
+
+            Deception.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nDeception))
+            Deception.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Intimidation.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nIntimidation))
+            Intimidation.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Performance.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nPerformance))
+            Performance.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            Persuasion.text = String.format(resources.getString(R.string.underscoredText),
+                    calcAttributeMod(topic.attributeRoles[5]) + addPotentialSkillBoost(topic, nPersuasion))
+            Persuasion.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
 
 //            Log.e("debug", (calcAttributeMod(topic.attributeRoles[0]) + topic.proficiency).toString())
