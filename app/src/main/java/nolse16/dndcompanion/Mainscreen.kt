@@ -98,7 +98,8 @@ class Mainscreen : AppCompatActivity(){
                     )
             writeToFile(topic)
             topic = readFromFile()
-            armorClassText.text = topic.armorClass.toString()
+            armorClassText.text = String.format(resources.getString(R.string.bigText),
+                    topic.armorClass + calcAttributeMod(topic.attributeRoles[1]))
             hitpointsText.text = topic.hitPointsCurrent.toString()
             temphitpointsText.text = topic.tempHitPoints.toString()
             speedText.text = topic.speed.toString() + " feet"

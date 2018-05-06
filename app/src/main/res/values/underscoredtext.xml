@@ -3,4 +3,7 @@
     <string name="underscoredText">
         +%1$d
     </string>
+    <string name="bigText">
+        %1$d
+    </string>
 </resources>
